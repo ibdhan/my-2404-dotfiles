@@ -1,86 +1,62 @@
-# gnome-shortcuts
+# 🐧 GNOME Keybinding Manager
 
-A script to apply and reset custom GNOME keybindings, designed to work alongside **xremap** for a clean, conflict-free shortcut setup.
+This component handles the **Window Layer** of your configuration. It uses a Bash script to directly manipulate GNOME's `gsettings` database, ensuring that window management is fast, native, and conflict-free.
 
-## Design Philosophy
+## 🎯 Key Design Goals
+- **Vim-Style Navigation**: Use `H/J/K/L` or `W/A/S/D` logic for window snapping.
+- **Modifier Separation**: All window management is strictly bound to the `Super` key.
+- **No Corner-Snap Hijacking**: Explicitly clears corner-snapping shortcuts that often conflict with side-snapping.
 
-Shortcuts are split across three layers to avoid modifier conflicts:
+---
 
-| Layer | Modifier | Managed by |
-|---|---|---|
-| App-level navigation | `Alt+key` | xremap |
-| Window management | `Super+key` | GNOME (this script) |
-| Window move/workspace nav | `Super+Shift+key` | GNOME (this script) |
-| Move window to workspace | `Super+Ctrl+key` | GNOME (this script) |
+## 🛠️ Usage
 
-This separation ensures xremap and GNOME never fight over the same modifier namespace.
-
-## Usage
-
+### Apply Shortcuts
 ```bash
-# Apply custom keybindings
-./gnome-shortcuts.sh
-
-# Reset all keybindings to GNOME defaults
-./gnome-shortcuts.sh --reset
+chmod +x my-gnome-shortcut.sh
+./my-gnome-shortcut.sh
 ```
 
-Make it executable first:
-
+### Reset to GNOME Defaults
 ```bash
-chmod +x gnome-shortcuts.sh
+./my-gnome-shortcut.sh --reset
 ```
 
-## Keybinding Reference
+---
 
-### Window State — `Super+key`
+## 📋 Keybinding Reference
 
+### Window Snapping (`Super + key`)
+| Shortcut | Action | Note |
+| :--- | :--- | :--- |
+| `Super + W` | **Snap to Top** | Fixed to avoid North-East corner snap |
+| `Super + S` | **Snap to Bottom** | |
+| `Super + A` | **Snap to Left** | |
+| `Super + D` | **Snap to Right** | |
+| `Super + C` | **Move to Center** | |
+
+### Window State (`Super + key`)
 | Shortcut | Action |
-|---|---|
-| `Super+k` | Maximize window |
-| `Super+j` | Unmaximize window |
-| `Super+q` | Close window |
-| `Super+h` | Minimize window |
-| `Super+m` | Show desktop |
+| :--- | :--- |
+| `Super + K` | Maximize window |
+| `Super + J` | Unmaximize window |
+| `Super + H` | Minimize window |
+| `Super + Q` | Close window |
+| `Super + M` | Show desktop |
 
-### Window Positioning — `Super+key`
+### Workspace & Movement
+| Shortcut | Modifier | Action |
+| :--- | :--- | :--- |
+| `Super + Shift + J` | `Super+Shift` | Switch to Left Workspace |
+| `Super + Shift + K` | `Super+Shift` | Switch to Right Workspace |
+| `Super + Ctrl + J` | `Super+Ctrl` | Move Window to Left Workspace |
+| `Super + Ctrl + K` | `Super+Ctrl` | Move Window to Right Workspace |
 
-| Shortcut | Action |
-|---|---|
-| `Super+c` | Move to center |
-| `Super+a` | Snap to left |
-| `Super+d` | Snap to right |
-| `Super+w` | Snap to top |
-| `Super+s` | Snap to bottom |
+---
 
-### Window Move & Resize — `Super+Shift+key`
-
-| Shortcut | Action |
-|---|---|
-| `Super+Shift+m` | Begin move (mouse drag) |
-| `Super+Shift+r` | Begin resize (mouse drag) |
-
-### Workspace Navigation — `Super+Shift+key`
-
-| Shortcut | Action |
-|---|---|
-| `Super+Shift+j` | Switch to left workspace |
-| `Super+Shift+k` | Switch to right workspace |
-
-### Move Window to Workspace — `Super+Ctrl+key`
-
-| Shortcut | Action |
-|---|---|
-| `Super+Ctrl+j` | Move window to left workspace |
-| `Super+Ctrl+k` | Move window to right workspace |
-
-## Notes
-
-- `toggle-application-view` (default `Super+A`) is explicitly cleared to free up `Super+A` for `move-to-side-w`.
-- Run `--reset` before re-applying if you're troubleshooting a conflict.
-- To verify active bindings at any time:
-
+## 🔍 Troubleshooting
+If a shortcut like `Super+W` is still moving windows to a corner, verify your active bindings with:
 ```bash
-gsettings list-recursively org.gnome.desktop.wm.keybindings
-gsettings list-recursively org.gnome.shell.keybindings
+gsettings list-recursively org.gnome.desktop.wm.keybindings | grep "<Super>w"
 ```
+The script now explicitly clears `move-to-corner-ne` to ensure `Super+W` only triggers `move-to-side-n`.
