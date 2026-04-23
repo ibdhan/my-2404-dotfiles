@@ -1,0 +1,12 @@
+{
+    "name": "Window Resizer",
+    "description": "Resize and move the focused window to preset sizes via keyboard shortcuts",
+    "uuid": "win-resizer@local",
+    "settings-schema": "org.gnome.shell.extensions.win-resizer",
+    "shell-version": [
+        "45",
+        "46",
+        "47"
+    ],
+    "version": 1
+}

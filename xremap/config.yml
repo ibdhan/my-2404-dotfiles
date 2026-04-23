@@ -1,0 +1,152 @@
+# xremap config — converted from AHK script
+# Note: xremap uses "first match wins" per keymap block.
+# App-specific blocks are placed BEFORE the global fallback blocks.
+
+# ==============================================================================
+# MODMAP — dual-role CapsLock (keep from POC)
+# ==============================================================================
+# modmap:
+#   - name: CapsLock dual-role
+#     remap:
+#       CapsLock:
+#         held: Control_L
+#         alone: Esc  
+#         alone_timeout_millis: 200
+
+# ==============================================================================
+# KEYMAP
+# ==============================================================================
+keymap:
+  # ----------------------------------------------------------------------------
+  # Alt+T — New tab
+  # Zen/Edge/Chrome → Ctrl+T
+  # Terminal (Alacritty, kitty, Gnome-terminal) → Ctrl+Shift+T
+  # Others → passthrough Alt+T
+  # ----------------------------------------------------------------------------
+  - name: Alt+T in browsers → Ctrl+T
+    application:
+      only: [app.zen_browser.zen, microsoft-edge, google-chrome, Chromium]
+    remap:
+      Alt-t: C-t
+
+  - name: Alt+T in terminal → Ctrl+Shift+T
+    application:
+      only: [com.mitchellh.ghostty, gnome-terminal-server]
+    remap:
+      Alt-t: C-Shift-t
+
+  # No block needed for "else → Alt+T"; unmatched keys pass through naturally.
+
+  # ----------------------------------------------------------------------------
+  # Alt+W — Close tab
+  # Zen/Edge/Chrome → Ctrl+W
+  # Terminal → Ctrl+Shift+W
+  # VSCode / Obsidian → Ctrl+W
+  # Others → passthrough Alt+W
+  # ----------------------------------------------------------------------------
+  - name: Alt+W in browsers → Ctrl+W
+    application:
+      only: [app.zen_browser.zen, microsoft-edge, google-chrome, Chromium]
+    remap:
+      Alt-w: C-w
+
+  - name: Alt+W in terminal → Ctrl+Shift+W
+    application:
+      only: [com.mitchellh.ghostty, gnome-terminal-server]
+    remap:
+      Alt-w: C-Shift-w
+
+  - name: Alt+W in VSCode / Obsidian → Ctrl+W
+    application:
+      only: [Code, obsidian]
+    remap:
+      Alt-w: C-w
+
+  # ----------------------------------------------------------------------------
+  # Alt+R — Reload
+  # Zen/Edge/Chrome → Ctrl+R
+  # Others → passthrough Alt+R
+  # ----------------------------------------------------------------------------
+  - name: Alt+R in browsers → Ctrl+R
+    application:
+      only: [app.zen_browser.zen, microsoft-edge, google-chrome, Chromium]
+    remap:
+      Alt-r: C-r
+
+  # ----------------------------------------------------------------------------
+  # Alt+J — Previous tab (direction: left/back)
+  # Zen             → Ctrl+Tab
+  # Edge/Chrome     → Ctrl+Shift+Tab
+  # Obsidian        → Ctrl+Shift+Tab
+  # Terminal        → Ctrl+Shift+Tab
+  # VSCode          → Ctrl+PageUp
+  # Others          → passthrough Alt+J
+  # ----------------------------------------------------------------------------
+  - name: Alt+J in Zen → Ctrl+Tab
+    application:
+      only: app.zen_browser.zen
+    remap:
+      Alt-j: C-Tab
+
+  - name: Alt+J in browsers → Ctrl+Shift+Tab
+    application:
+      only: [microsoft-edge, google-chrome, Chromium]
+    remap:
+      Alt-j: C-Shift-Tab
+
+  - name: Alt+J in Obsidian → Ctrl+Shift+Tab
+    application:
+      only: obsidian
+    remap:
+      Alt-j: C-Shift-Tab
+
+  - name: Alt+J in terminal → Ctrl+Shift+Tab
+    application:
+      only: [com.mitchellh.ghostty, gnome-terminal-server]
+    remap:
+      Alt-j: C-Shift-Tab
+
+  - name: Alt+J in VSCode → Ctrl+PageUp
+    application:
+      only: Code
+    remap:
+      Alt-j: C-Shift-Tab
+
+  # ----------------------------------------------------------------------------
+  # Alt+K — Next tab (direction: right/forward)
+  # Zen             → Ctrl+Shift+Tab
+  # Edge/Chrome     → Ctrl+Tab
+  # Obsidian        → Ctrl+Tab
+  # Terminal        → Ctrl+Tab
+  # VSCode          → Ctrl+PageDown
+  # Others          → passthrough Alt+K
+  # ----------------------------------------------------------------------------
+  - name: Alt+K in Zen → Ctrl+Shift+Tab
+    application:
+      only: app.zen_browser.zen
+    remap:
+      Alt-k: C-Shift-Tab
+
+  - name: Alt+K in browsers → Ctrl+Tab
+    application:
+      only: [microsoft-edge, google-chrome, Chromium]
+    remap:
+      Alt-k: C-Tab
+
+  - name: Alt+K in Obsidian → Ctrl+Tab
+    application:
+      only: obsidian
+    remap:
+      Alt-k: C-Tab
+
+  - name: Alt+K in terminal → Ctrl+Tab
+    application:
+      only: [com.mitchellh.ghostty, gnome-terminal-server]
+    remap:
+      Alt-k: C-Tab
+
+  - name: Alt+K in VSCode → Ctrl+PageDown
+    application:
+      only: Code
+    remap:
+      Alt-k: C-Tab

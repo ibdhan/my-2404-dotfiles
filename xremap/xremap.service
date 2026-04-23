@@ -1,0 +1,13 @@
+[Unit]
+Description=xremap key remapper
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/local/bin/xremap %h/.config/xremap/config.yml
+Restart=on-failure
+RestartSec=3
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=graphical-session.target

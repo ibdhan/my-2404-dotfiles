@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.win-resizer" path="/org/gnome/shell/extensions/win-resizer/">
+    <key name="preset-1" type="as">
+      <default>['&lt;Super&gt;&lt;Alt&gt;1']</default>
+      <summary>Shortcut for preset 1</summary>
+    </key>
+    <key name="preset-2" type="as">
+      <default>['&lt;Super&gt;&lt;Alt&gt;2']</default>
+      <summary>Shortcut for preset 2</summary>
+    </key>
+    <key name="preset-3" type="as">
+      <default>['&lt;Super&gt;&lt;Alt&gt;3']</default>
+      <summary>Shortcut for preset 3</summary>
+    </key>
+  </schema>
+</schemalist>
