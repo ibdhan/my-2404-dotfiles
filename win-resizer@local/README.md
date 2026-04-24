@@ -35,22 +35,27 @@ You can customize the presets directly in `extension.js`. Look for the `PRESETS`
 
 ```javascript
 const PRESETS = [
-    { key: '<Super><Alt>1', width: 1280, height: 720, x: 'center', y: 'center' },
-    { key: '<Super><Alt>2', width: 1920, height: 1080, x: 'center', y: 'center' },
-    { key: '<Super><Alt>3', width: 800, height: 600 },
+    // Super + [ and Super + ]
+    { key: '<Super>bracketleft', width: 1520, height: 1020, x: 'center', y: 'center' },
+    { key: '<Super>bracketright', width: 1720, height: 1020, x: 'center', y: 'center' },
+
+    // Super + { and Super + } (Note the added <Shift>)
+    { key: '<Super><Shift>bracketleft', width: 1080, height: 800, x: '', y: '' },
+    { key: '<Super><Shift>bracketright', width: 1400, height: 960, x: '', y: '' },
 ];
 ```
 
-- **key**: The keyboard shortcut (e.g., `<Super><Alt>1`).
+- **key**: The keyboard shortcut (e.g., `<Super>bracketleft`).
 - **width/height**: Target dimensions in pixels.
-- **x/y**: (Optional) Position. Use `'center'` for auto-centering.
+- **x/y**: (Optional) Position. Use `'center'` for auto-centering, or a pixel value. Leave as `''` or omit to keep current position.
 
 ---
 
 ## 📋 Default Shortcuts
-- `Super + Alt + 1`: 720p (Centered)
-- `Super + Alt + 2`: 1080p (Centered)
-- `Super + Alt + 3`: 800x600 (Current position)
+- `Super + [`: 1520x1020 (Centered)
+- `Super + ]`: 1720x1020 (Centered)
+- `Super + {`: 1080x800 (Maintain position)
+- `Super + }`: 1400x960 (Maintain position)
 
 ---
 
