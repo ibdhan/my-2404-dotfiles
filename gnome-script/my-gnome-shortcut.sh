@@ -50,7 +50,8 @@ if [[ "$1" == "--reset" ]]; then
     gsettings reset org.gnome.shell.extensions.dash-to-dock shortcut
     gsettings reset org.gnome.shell.extensions.dash-to-dock shortcut-text
 
-    gsettings reset org.gnome.shell.keybindings toggle-quick-settings
+    gsettings reset $SHELL toggle-quick-settings
+    gsettings reset $WM activate-window-menu
 
     echo "Done! All keybindings restored to defaults."
     exit 0
@@ -94,11 +95,13 @@ gsettings set $WM move-to-workspace-left   "['<Super><Control>j']"
 gsettings set $WM move-to-workspace-right  "['<Super><Control>k']"
 
 # Shell — clear conflicts
-gsettings set $SHELL toggle-application-view "[]"
+gsettings set $SHELL toggle-application-view "['<Alt>space']"
 
 gsettings set org.gnome.shell.extensions.dash-to-dock shortcut "[]"
 gsettings set org.gnome.shell.extensions.dash-to-dock shortcut-text ""
 
-gsettings set org.gnome.shell.keybindings toggle-quick-settings "[]"
+# Shell — toggle-quick-settings
+gsettings set $SHELL toggle-quick-settings "[]"
+gsettings set $WM activate-window-menu "[]"
 
 echo "Done! Keybindings applied successfully."
