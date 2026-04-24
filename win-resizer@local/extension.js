@@ -15,11 +15,17 @@ import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 // Key string format examples:
 //   '<Super><Alt>1'   '<Control><Alt>c'   '<Super>F1'
 //
+
 const PRESETS = [
-    { key: '<Super><Alt>1', width: 1280, height: 720, x: 'center', y: 'center' },
-    { key: '<Super><Alt>2', width: 1920, height: 1080, x: 'center', y: 'center' },
-    { key: '<Super><Alt>3', width: 800, height: 600 },  // no position — stays in place
+    // Super + [ and Super + ]
+    { key: '<Super>bracketleft', width: 1520, height: 1020, x: 'center', y: 'center' },
+    { key: '<Super>bracketright', width: 1720, height: 1020, x: 'center', y: 'center' },
+
+    // Super + { and Super + } (Note the added <Shift>)
+    { key: '<Super><Shift>bracketleft', width: 1080, height: 800, x: '', y: '' },
+    { key: '<Super><Shift>bracketright', width: 1400, height: 960, x: '', y: '' },
 ];
+
 
 
 export default class WindowResizerExtension extends Extension {
@@ -69,13 +75,13 @@ export default class WindowResizerExtension extends Extension {
 
         if (preset.x === 'center') {
             x = workArea.x + Math.round((workArea.width - width) / 2);
-        } else if (preset.x !== undefined) {
+        } else if (typeof preset.x === 'number') {
             x = workArea.x + preset.x;
         }
 
         if (preset.y === 'center') {
             y = workArea.y + Math.round((workArea.height - height) / 2);
-        } else if (preset.y !== undefined) {
+        } else if (typeof preset.y === 'number') {
             y = workArea.y + preset.y;
         }
 

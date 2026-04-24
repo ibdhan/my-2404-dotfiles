@@ -51,3 +51,15 @@ const PRESETS = [
 - `Super + Alt + 1`: 720p (Centered)
 - `Super + Alt + 2`: 1080p (Centered)
 - `Super + Alt + 3`: 800x600 (Current position)
+
+---
+
+## 🔧 Troubleshooting
+
+### "Expected type string for argument 'schema_id' but got type undefined"
+If you encounter this error when enabling the extension, it means GNOME cannot find the settings schema. Ensure that:
+1. `metadata.json` contains `"settings-schema": "org.gnome.shell.extensions.win-resizer"`.
+2. The schema has been compiled using `glib-compile-schemas schemas/`.
+3. The `extension.js` calls `this.getSettings('org.gnome.shell.extensions.win-resizer')`.
+
+The included `install.sh` handles the compilation automatically.
