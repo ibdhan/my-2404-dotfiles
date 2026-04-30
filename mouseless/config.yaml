@@ -1,0 +1,26 @@
+#: the default speed for mouse movement and scrolling
+baseMouseSpeed: 250.0
+baseScrollSpeed: 20.0
+
+# the rest of the config defines the layers with their bindings
+layers:
+# the first layer is active at start
+- name: initial
+  bindings:
+    # toggle using capslock
+    capslock: layer mouse
+# a layer for mouse movement
+- name: mouse
+  # when true, keys that are not mapped keep their original meaning
+  passThrough: true
+  bindings:
+    # quit mouse layer
+    capslock: layer initial
+    d: move  1  0
+    a: move -1  0
+    s: move  0  1
+    w: move  0 -1
+    0: scroll up
+    9: scroll down
+    i: button left
+    o: button right

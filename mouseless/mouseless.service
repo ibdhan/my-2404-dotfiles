@@ -1,0 +1,9 @@
+[Unit]
+Description=mouseless
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/mouseless --config /home/ibnu/.config/mouseless/config.yaml
+
+[Install]
+WantedBy=default.target
