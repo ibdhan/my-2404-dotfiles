@@ -7,12 +7,12 @@
 | File | Description |
 |------|-------------|
 | `config.yaml` | Active configuration |
-| `backup_config.yaml` | Backup/alternative configuration |
+| `config_full.yaml` | Full example/alternative configuration |
 | `mouseless.service` | Systemd user service file |
 
 ## Active Config (`config.yaml`)
 
-- **Base mouse speed:** 250.0
+- **Base mouse speed:** 400.0
 - **Base scroll speed:** 20.0
 
 ### Key Bindings
@@ -31,7 +31,7 @@ Toggle the mouse layer with `CapsLock`.
 | `0` | Scroll up |
 | `9` | Scroll down |
 
-## Backup Config (`backup_config.yaml`)
+## Full Config (`config_full.yaml`)
 
 Alternative config with higher base speed (750.0) and different activation methods.
 
@@ -66,9 +66,18 @@ Copy the config and enable the systemd user service:
 mkdir -p ~/.config/mouseless
 cp config.yaml ~/.config/mouseless/config.yaml
 
+# Optional: use the full alternative config instead
+# cp config_full.yaml ~/.config/mouseless/config.yaml
+
 cp mouseless.service ~/.config/systemd/user/
 systemctl --user daemon-reload
 systemctl --user enable --now mouseless
+```
+
+The provided `mouseless.service` starts:
+
+```bash
+/usr/local/bin/mouseless --config /home/ibnu/.config/mouseless/config.yaml
 ```
 
 ### Check service status
