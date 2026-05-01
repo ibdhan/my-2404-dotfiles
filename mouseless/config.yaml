@@ -17,6 +17,8 @@ layers:
 - name: mouse
   # when true, keys that are not mapped keep their original meaning
   passThrough: true
+  enterCommand: "notify-send '🐭 Mouse Mode'"
+  exitCommand: "notify-send '⌨️ Keyboard Mode'"
   bindings:
     # quit mouse layer
     capslock: layer initial
@@ -24,7 +26,7 @@ layers:
     a: move -1  0
     s: move  0  1
     w: move  0 -1
-    0: scroll up
-    9: scroll down
+    k0: scroll up
+    k9: scroll down
     i: button left
     o: button right
