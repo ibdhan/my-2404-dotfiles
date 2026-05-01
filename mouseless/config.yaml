@@ -1,5 +1,9 @@
+# Define devices
+devices: 
+  - "AT Translated Set 2 keyboard"
+
 #: the default speed for mouse movement and scrolling
-baseMouseSpeed: 250.0
+baseMouseSpeed: 400.0
 baseScrollSpeed: 20.0
 
 # the rest of the config defines the layers with their bindings

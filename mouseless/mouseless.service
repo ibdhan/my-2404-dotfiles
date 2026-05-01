@@ -1,9 +1,11 @@
 [Unit]
 Description=mouseless
+After=graphical-session.target
 
 [Service]
-Type=simple
 ExecStart=/usr/local/bin/mouseless --config /home/ibnu/.config/mouseless/config.yaml
+Restart=on-failure
+RestartSec=3
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target
