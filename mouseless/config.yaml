@@ -17,7 +17,7 @@ layers:
 - name: mouse
   # when true, keys that are not mapped keep their original meaning
   passThrough: true
-  enterCommand: "notify-send '🐭 Mouse Mode'"
+  enterCommand: "notify-send '🖱️ Mouse Mode'"
   exitCommand: "notify-send '⌨️ Keyboard Mode'"
   bindings:
     # quit mouse layer
@@ -28,5 +28,7 @@ layers:
     w: move  0 -1
     k0: scroll up
     k9: scroll down
+    e: scroll up
+    q: scroll down
     i: button left
     o: button right

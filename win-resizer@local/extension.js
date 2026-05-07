@@ -23,7 +23,7 @@ const PRESETS = [
 
     // Super + { and Super + } (Note the added <Shift>)
     { key: '<Super><Shift>bracketleft', width: 1080, height: 800, x: '', y: '' },
-    { key: '<Super><Shift>bracketright', width: 1400, height: 960, x: '', y: '' },
+    { key: '<Super><Shift>bracketright', width: 1400, height: 900, x: '', y: '' },
 ];
 
 
